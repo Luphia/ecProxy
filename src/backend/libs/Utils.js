@@ -187,8 +187,8 @@ class Utils {
     ]))
     .then((rs) => Promise.resolve({
       config: rs[0],
-      logger: rs[3],
-      i18n: rs[4]
+      logger: rs[1],
+      i18n: rs[2]
     }))
     .catch(console.trace);
   }
