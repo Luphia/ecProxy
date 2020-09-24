@@ -183,18 +183,12 @@ class Utils {
     })
     .then((config) => Promise.all([
       config,
-      this.initialLevel(config),
-      this.initialDB(config),
       this.initialLogger(config),
       this.initiali18n(config),
       this.initialProcess(config)
     ]))
     .then((rs) => Promise.resolve({
       config: rs[0],
-      database: {
-        leveldb: rs[1],
-        mongodb: rs[2]
-      },
       logger: rs[3],
       i18n: rs[4]
     }))
@@ -426,40 +420,6 @@ class Utils {
     });
   }
 
-  static initialLevel({ homeFolder }) {
-    const dbPath = path.resolve(homeFolder, 'dataset');
-    return this.initialFolder({ homeFolder: dbPath })
-    .then(() => level(dbPath, { valueEncoding: 'json' }));
-  }
-
-  static initialDB({ database }) {
-    if(Object.keys(database).length == 0) {
-      return Promise.resolve(false);
-    }
-    let dbPath;
-    let dbConfig = database;
-    dbConfig.pathname = `/${database.db}`;
-    dbConfig.slashes = true;
-    if(database.user && database.password) {
-      dbConfig.auth = dvalue.sprintf('%s:%s', database.user, database.password);
-      dbPath = url.format(database);
-    }
-    else {
-      dbPath = url.format(database);
-    }
-    return new Promise((resolve, reject) => {
-      mongodb.connect(dbPath, { useNewUrlParser: true }, (e, d) => {
-        if(e) {
-          resolve(false);
-        } else {
-          const db = d.db();
-          db.close = d.close;
-          resolve(db);
-        }
-      });
-    });
-  }
-
   static initialLogger({ homeFolder, base }) {
     return Promise.resolve({
       log: console.log,
@@ -492,11 +452,7 @@ class Utils {
     .then(() => Bots );
   }
 
-  static close({ Bots }) {
-    const database = Bots[0].database;
-    database.mongodb.close();
-    database.leveldb.close();
-  }
+  static close({ Bots }) {}
 
   static crossOrigin(options = {}) {
     const defaultOptions = {

@@ -34,9 +34,6 @@ class Receptor extends Bot {
     return super.start()
     .then(() => this.createPem())
     .then((options) => {
-      this.database.leveldb
-    })
-    .then((options) => {
       const sessionSecret = dvalue.randomID(24);
       const app = new koa();
       const blockchain = this.config.blockchain
