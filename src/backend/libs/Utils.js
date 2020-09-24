@@ -3,8 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 
-const level = require('level');
-const mongodb = require('mongodb').MongoClient;
 const toml = require('toml');
 const i18n = require("i18n");
 const dvalue = require('dvalue');
