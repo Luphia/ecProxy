@@ -1,0 +1,61 @@
+{
+  "name": "ecproxy",
+  "version": "0.1.0",
+  "description": "An Easy to Handle A Proxy Service",
+  "main": "bin/main.js",
+  "bin": {
+    "mermer": "bin/main.js"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --mode development --open 'google chrome'",
+    "gulp": "node_modules/gulp/bin/gulp.js watch & bin/main.js",
+    "start": "bin/main.js",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luphia/ecProxy.git"
+  },
+  "keywords": [
+    "frontend",
+    "backend",
+    "framework"
+  ],
+  "author": "MerMer Ltd.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Luphia/ecProxy/issues"
+  },
+  "homepage": "https://github.com/Luphia/ecProxy#readme",
+  "dependencies": {
+    "command-line-args": "^5.0.2",
+    "dvalue": "^1.0.20",
+    "ecrequest": "^1.1.3",
+    "i18n": "^0.8.3",
+    "koa": "^2.7.0",
+    "koa-better-http-proxy": "^0.2.4",
+    "koa-body": "^4.0.8",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.10.1",
+    "koa-static": "^5.0.0",
+    "level": "^4.0.0",
+    "mongodb": "^3.1.13",
+    "ncp": "^2.0.0",
+    "pem": "^1.14.2",
+    "spdy": "^4.0.0",
+    "toml": "^3.0.0",
+    "ws": "^6.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "css-loader": "^2.1.0",
+    "koa-webpack": "^5.2.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.0",
+    "webpack-livereload-plugin": "^1.2.0"
+  }
+}

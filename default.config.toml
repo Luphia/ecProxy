@@ -1,0 +1,21 @@
+# ecProxy Default Config
+
+title = "ecProxy"
+
+[base]
+folder = "ecProxy"
+static = "./build/frontend/"
+debug = false
+
+[blockchain]
+type = "ethereum"
+host = "127.0.0.1"
+port = 8545
+
+[database]
+type = "firebase"
+
+[api]
+pathname = [
+  "get | /,/version | Static.Utils.readPackageInfo"
+]

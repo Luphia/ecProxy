@@ -1,0 +1,14 @@
+# ecProxy Default Config
+
+title = "ecProxy"
+
+[base]
+folder = "ecProxy"
+static = "./build/frontend/"
+debug = false
+
+[blockchain]
+type = "ethereum"
+
+[database]
+type = "firebase"
