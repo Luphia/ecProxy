@@ -4,6 +4,7 @@ const pem = require('pem');
 const http = require('http');
 const spdy  = require('spdy');
 const koa = require('koa');
+const cors = require('@koa/cors');
 const proxy = require('koa-better-http-proxy');
 const session = require('koa-session');
 const Router = require('koa-router');
@@ -36,7 +37,8 @@ class Receptor extends Bot {
     .then((options) => {
       const sessionSecret = dvalue.randomID(24);
       const app = new koa();
-      const blockchain = this.config.blockchain
+      const blockchain = this.config.blockchain;
+      app.use(cors());
       app.use(proxy(blockchain.host, blockchain));
       return this.listen({ options, callback: app.callback() });
     });

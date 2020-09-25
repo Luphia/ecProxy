@@ -11,6 +11,8 @@ debug = false
 type = "ethereum"
 host = "127.0.0.1"
 port = 8545
+account = ""
+password = ""
 
 [database]
 type = "firebase"
