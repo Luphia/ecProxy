@@ -4,7 +4,7 @@ An Easy to Handle A Proxy Service
 # Prepare Environment
 ```shell
 # Install node
-bash <(curl https://raw.githubusercontent.com/Luphia/SIMPLE/master/shell/install-env.sh -kL)
+bash <(curl https://raw.githubusercontent.com/Luphia/ecProxy/master/shell/install.sh -kL)
 ```
 
 # Deploy
