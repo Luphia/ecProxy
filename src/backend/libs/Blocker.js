@@ -1,6 +1,6 @@
 const Blocker = () => {
   return async (ctx, next) => {
-    const user = ctx.request.header.host;
+    const user = ctx.request.header.['cf-connecting-ip'] || ctx.request.header.host;
     const start = Date.now();
     return next().then(() => {
       const ms = Date.now() - start;
