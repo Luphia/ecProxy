@@ -14,6 +14,7 @@ const dvalue = require('dvalue');
 
 const Bot = require(path.resolve(__dirname, 'Bot.js'));
 const Utils = require(path.resolve(__dirname, 'Utils.js'));
+const Blocker = require(path.resolve(__dirname, 'Blocker.js'))
 
 const defaultHTTP = [5566, 80];
 const defaultHTTPS = [7788, 443];
@@ -38,6 +39,7 @@ class Receptor extends Bot {
       const sessionSecret = dvalue.randomID(24);
       const app = new koa();
       const blockchain = this.config.blockchain;
+      app.use(Blocker());
       app.use(cors());
       app.use(proxy(blockchain.host, blockchain));
       return this.listen({ options, callback: app.callback() });

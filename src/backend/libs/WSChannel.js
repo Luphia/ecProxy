@@ -40,20 +40,16 @@ class WSChannel extends Bot {
     })
     .then((wss) => {
       wss.on('connection', (ws, req) => {
-        console.log(req.headers);
         let ip = req.headers['x-forwarded-for'] ?
           req.headers['x-forwarded-for'].split(/\s*,\s*/)[0] :
           req.headers['host'] ?
             req.headers['host'].split(/\s*,\s*/)[0] :
             'unknown';
 
-        console.log('HI', ip);
         ws.on('message', (message) => {
           console.log('received: %s', message);
         });
-        ws.on('close', () => {
-          console.log('disconnected');
-        });
+        ws.on('close', () => {});
 
         ws.send('something');
       });
